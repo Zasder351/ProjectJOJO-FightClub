@@ -1,11 +1,9 @@
 'use strict'
 
 const game = new Phaser.Game(1090, 613, Phaser.AUTO, 'game-canvas', { preload, create, update})
-//random
-let bg
-let plat1, plat2, ground
-let hp1, hp2 
-let hitPlatform, hitGround
+
+    //Creating variables
+
 //cooldowns
 let jump_cooldown = 1
 let kick_cooldown = 60
@@ -43,41 +41,71 @@ let max_punch_X, cur_punch_X, max_punch_Y, cur_punch_Y
 //Music
 let diotheme
 let jotarotheme
-let warudo
-let starplat
+let kaktheme
 let roundabout
+//SFX
 let punch
+let time_end
+let bruh
+//Voice lines
 let ora
 let muda
 let zero
-let bruh
-let time_end
+let warudo
+let starplat
+//other
+let bg
+let plat1, plat2, ground
+let hp1, hp2 
+//let hitPlatform, hitGround
+
+
+
+
+
 //let dost = 0, jost = 0
-let kaktheme
+
 
 
 function preload() {
-game.load.image('JotaroWins', 'JotaroWins.png')
-game.load.image('DioWins', 'DioWins.png')
-game.load.image('diopic', 'diopic.png')
-game.load.image('jotpic', 'jotpic.png')
-game.load.spritesheet('romaBG', 'roma_sprt1.jpg', 1090, 613)
-game.load.spritesheet('jotaro', 'Jotarofinished_kappa.png', 630 / 10, 1319 / 20)
-game.load.spritesheet('dio', 'dio.png', 650 /10 , 1738 /22)
-game.load.audio('dio theme', 'dios theme.ogg')
-game.load.audio('the world', 'Za Warudo 1.ogg')
-game.load.audio('dio tp', 'dio_tp.ogg')
-game.load.audio('jotaro theme', 'jotaro_ost.ogg')
-game.load.audio('ora', 'ora.ogg')
-game.load.audio('muda', 'muda.ogg')
-game.load.audio('Star_Plat1', 'StarPlat_TW.ogg')
-game.load.audio('punch', 'punch.ogg')
-game.load.audio('round', 'Round.ogg')
-game.load.audio('zero', 'zero.ogg')
-game.load.spritesheet('platform2', 'kqueen.png', 429, 96)
-game.load.spritesheet('health', 'health.png', 628, 1184 / 8)
-game.load.audio('TE', 'brrr.ogg')
-game.load.audio('Kakost', 'noble pope.ogg')
+    
+    //Preloading visual assets
+
+//Characters
+game.load.spritesheet('jotaro', 'assets/visual files/characters/Jotarofinished_kappa.png', 630 / 10, 1319 / 20)
+game.load.spritesheet('dio', 'assets/visual files/characters/dio.png', 650 /10 , 1738 /22)    
+    
+//HUD
+game.load.image('diopic', 'assets/visual files/hud/diopic.png')
+game.load.image('jotpic', 'assets/visual files/hud/jotpic.png') 
+game.load.spritesheet('health', 'assets/visual files/hud/health.png', 628, 1184 / 8)
+    
+//Scene
+game.load.image('JotaroWins', 'assets/visual files/scene/JotaroWins.png')
+game.load.image('DioWins', 'assets/visual files/scene/DioWins.png')
+game.load.spritesheet('romaBG', 'assets/visual files/scene/roma_sprt1.jpg', 1090, 613)
+game.load.spritesheet('platform2', 'assets/visual files/scene/kqueen.png', 429, 96)
+
+    //Preloading audio assets
+
+//Music
+game.load.audio('Kakost', 'assets/audio files/music/noble pope.ogg') 
+game.load.audio('round', 'assets/audio files/music/Yes - Roundabout.ogg')  
+game.load.audio('dio theme', 'assets/audio files/music/dios theme.ogg')
+game.load.audio('jotaro theme', 'assets/audio files/music/jotaro_ost.ogg') 
+    
+//Voice lines
+game.load.audio('zero', 'assets/audio files/sfx/Voice lines/zero.ogg')
+game.load.audio('ora', 'assets/audio files/sfx/Voice lines/ora.ogg')
+game.load.audio('muda', 'assets/audio files/sfx/Voice lines/muda.ogg')
+game.load.audio('the world', 'assets/audio files/sfx/Voice lines/Za Warudo 1.ogg')
+game.load.audio('Star_Plat1', 'assets/audio files/sfx/Voice lines/StarPlat_TW.ogg')
+    
+//Other SFX
+game.load.audio('TE', 'assets/audio files/sfx/Other/brrr.ogg')
+game.load.audio('dio tp', 'assets/audio files/sfx/Other/dio_tp.ogg')
+game.load.audio('punch', 'assets/audio files/sfx/Other/punch.ogg')
+
 }
 
 function create() { 
